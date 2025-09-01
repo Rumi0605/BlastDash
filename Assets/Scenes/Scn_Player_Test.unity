@@ -393,6 +393,8 @@ GameObject:
   - component: {fileID: 1718609361}
   - component: {fileID: 1718609360}
   - component: {fileID: 1718609359}
+  - component: {fileID: 1718609365}
+  - component: {fileID: 1718609364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -412,10 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c30e445faa96a24e99458aeed409a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  characterStatusScriptableObject: {fileID: 11400000, guid: e1180eed9ff4960408c7f0c72ebc5361, type: 2}
   groundChecker: {fileID: 552365627}
-  currentJumpHoldTimer: 0
-  canJumpCount: 0
 --- !u!61 &1718609360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -563,6 +562,33 @@ Transform:
   - {fileID: 552365625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718609364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718609358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428d6e4499a24ab4db84812517d4a59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
+  testBullet: {fileID: 5925104239309457303, guid: d75eb70eb6d75e544b5078cb61ac936f, type: 3}
+--- !u!114 &1718609365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718609358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61455d59ed875e498acd9c66bd4156f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerMoveController
+  characterStatusScriptableObject: {fileID: 11400000, guid: e1180eed9ff4960408c7f0c72ebc5361, type: 2}
+  currentJumpHoldTime: 0
 --- !u!1 &1803438973
 GameObject:
   m_ObjectHideFlags: 0

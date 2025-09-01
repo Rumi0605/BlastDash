@@ -16,22 +16,28 @@ public class CharacterStatusScriptableObject : ScriptableObject
     private float jumpForce;
     
     /// <summary>
-    /// ホールドジャンプで加算される力
+    /// ジャンプホールドで加算される力
     /// </summary>
     [SerializeField] 
     private float jumpHoldForce;
     
     /// <summary>
-    /// ホールドジャンプのできる最大時間
+    /// ジャンプホールドできる最大時間
     /// </summary>
     [SerializeField] 
-    private float maxJumpHoldTimer;
+    private float maxJumpHoldTime;
     
     /// <summary>
     /// ジャンプできる最大回数
     /// </summary>
     [SerializeField] 
     private int maxJumpCount;
+
+    /// <summary>
+    /// 攻撃ホールドできる最大時間
+    /// </summary>
+    [SerializeField] 
+    private float maxAttackHoldTime;
     
     /// <summary>
     /// 移動速度の取得
@@ -44,17 +50,23 @@ public class CharacterStatusScriptableObject : ScriptableObject
     public float JumpForce => jumpForce;
     
     /// <summary>
-    /// ホールドジャンプで加算される力の取得
+    /// ジャンプホールドで加算される力の取得
     /// </summary>
     public float JumpHoldForce => jumpHoldForce;
     
     /// <summary>
-    /// ホールドジャンプのできる最大時間の取得
+    /// ジャンプホールドのできる最大時間の取得
     /// </summary>
-    public float MaxJumpHoldTimer => maxJumpHoldTimer;
+    public float MaxJumpHoldTime => maxJumpHoldTime;
     
     /// <summary>
     /// ジャンプできる最大回数の取得
     /// </summary>
     public int MaxJumpCount => maxJumpCount;
+    
+    /// <summary>
+    /// 攻撃ホールドできる最大時間の取得
+    /// </summary>
+    public float MaxAttackHoldTime =>  maxAttackHoldTime;
+    
 }

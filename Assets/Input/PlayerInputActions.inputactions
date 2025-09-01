@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Down",
+                    "name": "AttackHold",
                     "type": "Button",
                     "id": "9fed5c89-5373-4c32-a403-ae97ccf98b85",
                     "expectedControlType": "",
@@ -72,17 +72,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d93643fa-7d27-4862-8ba5-3c1e021bd701",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -127,6 +116,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "JumpHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0108ada1-a1b3-4ae9-8362-f96c7d7cb068",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Hold(duration=0.2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

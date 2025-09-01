@@ -15,5 +15,6 @@ MonoBehaviour:
   movementSpeed: 5
   jumpForce: 8
   jumpHoldForce: 1.5
-  maxJumpHoldTimer: 0.5
+  maxJumpHoldTime: 0.5
   maxJumpCount: 1
+  maxAttackHoldTime: 2

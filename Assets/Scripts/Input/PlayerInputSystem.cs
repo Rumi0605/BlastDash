@@ -17,6 +17,7 @@ namespace Input
         public bool IsJumpPressed => inputActions.Player.Jump.triggered;
         public bool IsJumpHold => inputActions.Player.JumpHold.ReadValue<float>() > 0f;
         public bool IsAttackPressed => inputActions.Player.Attack.triggered;
+        public bool IsAttackHold => inputActions.Player.AttackHold.ReadValue<float>() > 0f;
 
         public void Dispose()
         {

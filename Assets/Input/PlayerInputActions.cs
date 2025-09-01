@@ -129,7 +129,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Down"",
+                    ""name"": ""AttackHold"",
                     ""type"": ""Button"",
                     ""id"": ""9fed5c89-5373-4c32-a403-ae97ccf98b85"",
                     ""expectedControlType"": """",
@@ -158,17 +158,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d93643fa-7d27-4862-8ba5-3c1e021bd701"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -215,6 +204,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""JumpHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0108ada1-a1b3-4ae9-8362-f96c7d7cb068"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": ""Hold(duration=0.2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,7 +227,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_JumpHold = m_Player.FindAction("JumpHold", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
+        m_Player_AttackHold = m_Player.FindAction("AttackHold", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -312,7 +312,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_JumpHold;
     private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Down;
+    private readonly InputAction m_Player_AttackHold;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -341,9 +341,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Down".
+        /// Provides access to the underlying input action "Player/AttackHold".
         /// </summary>
-        public InputAction @Down => m_Wrapper.m_Player_Down;
+        public InputAction @AttackHold => m_Wrapper.m_Player_AttackHold;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -382,9 +382,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Down.started += instance.OnDown;
-            @Down.performed += instance.OnDown;
-            @Down.canceled += instance.OnDown;
+            @AttackHold.started += instance.OnAttackHold;
+            @AttackHold.performed += instance.OnAttackHold;
+            @AttackHold.canceled += instance.OnAttackHold;
         }
 
         /// <summary>
@@ -408,9 +408,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Down.started -= instance.OnDown;
-            @Down.performed -= instance.OnDown;
-            @Down.canceled -= instance.OnDown;
+            @AttackHold.started -= instance.OnAttackHold;
+            @AttackHold.performed -= instance.OnAttackHold;
+            @AttackHold.canceled -= instance.OnAttackHold;
         }
 
         /// <summary>
@@ -480,11 +480,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "AttackHold" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDown(InputAction.CallbackContext context);
+        void OnAttackHold(InputAction.CallbackContext context);
     }
 }
