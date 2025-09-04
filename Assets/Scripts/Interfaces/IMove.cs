@@ -6,5 +6,5 @@ public interface IMove
     
     public void JumpHold();
     
-    public void JumpReset();
+    public void Reset();
 }

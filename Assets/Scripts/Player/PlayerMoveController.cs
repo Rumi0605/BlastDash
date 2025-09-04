@@ -10,17 +10,16 @@ namespace Player
         /// 挙動に関するステータス
         /// </summary>
         [SerializeField]
-        private CharacterStatusScriptableObject characterStatusScriptableObject;
+        private PlayerStatusData playerStatusData;
         
         /// <summary>
         /// 残りのジャンプできる回数
         /// </summary>
         private int canJumpCount;
-    
+        
         /// <summary>
         /// 現在のホールド時間
         /// </summary>
-        
         [SerializeField]
         private float currentJumpHoldTime = 0f;
         
@@ -36,14 +35,14 @@ namespace Player
                 return;
             }
             
-            if (characterStatusScriptableObject == null)
+            if (playerStatusData == null)
             {
                 Debug.LogWarning($"{SCRIPT_NAME}:ステータスがアタッチされてないよ");
                 enabled = false;
                 return;
             }
             
-            canJumpCount = characterStatusScriptableObject.MaxJumpCount;
+            canJumpCount = playerStatusData.MaxJumpCount;
         }
         
         /// <summary>
@@ -51,7 +50,7 @@ namespace Player
         /// </summary>
         public void Move(float moveX)
         {
-            rigidbody2D.linearVelocity = new Vector2(moveX * characterStatusScriptableObject.MovementSpeed, rigidbody2D.linearVelocity.y);
+            rigidbody2D.linearVelocity = new Vector2(moveX * playerStatusData.MovementSpeed, rigidbody2D.linearVelocity.y);
         }
         
         /// <summary>
@@ -65,7 +64,7 @@ namespace Player
             }
 
             rigidbody2D.linearVelocity = Vector2.zero;
-            rigidbody2D.AddForce(Vector2.up * characterStatusScriptableObject.JumpForce, ForceMode2D.Impulse);
+            rigidbody2D.AddForce(Vector2.up * playerStatusData.JumpForce, ForceMode2D.Impulse);
             
             canJumpCount--;
         }
@@ -75,21 +74,22 @@ namespace Player
         /// </summary>
         public void JumpHold()
         {
-            if (characterStatusScriptableObject.MaxJumpHoldTime <= currentJumpHoldTime)
+            if (playerStatusData.MaxJumpHoldTime <= currentJumpHoldTime)
             {
                 return;
             }
             
-            currentJumpHoldTime += Time.deltaTime;
-            rigidbody2D.AddForce(Vector2.up * characterStatusScriptableObject.JumpHoldForce, ForceMode2D.Force);
+            currentJumpHoldTime = Mathf.Min(currentJumpHoldTime + Time.deltaTime, playerStatusData.MaxJumpHoldTime);
+
+            rigidbody2D.AddForce(Vector2.up * playerStatusData.JumpHoldForce, ForceMode2D.Force);
         }
     
         /// <summary>
         /// ジャンプ状態のリセット
         /// </summary>
-        public void JumpReset()
+        public void Reset()
         {
-            canJumpCount = characterStatusScriptableObject.MaxJumpCount;
+            canJumpCount = playerStatusData.MaxJumpCount;
             currentJumpHoldTime = 0f;
         }
     }

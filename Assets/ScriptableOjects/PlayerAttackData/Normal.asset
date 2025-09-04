@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e541dc66ff6a04b936669cf86dd108, type: 3}
+  m_Name: Normal
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackData
+  playerType: 0
+  chargeDataList:
+  - chargeTime: 0
+    speed: 8
+    damage: 1
+    prefab: {fileID: 9192379568567999025, guid: e2afd5563b797df4080eb8e25a1fe269, type: 3}
+  - chargeTime: 1
+    speed: 8
+    damage: 2
+    prefab: {fileID: 9192379568567999025, guid: 9c56c429d1c99764aa63547009b13485, type: 3}
+  - chargeTime: 3
+    speed: 12
+    damage: 3
+    prefab: {fileID: 9192379568567999025, guid: 79d4c09404c743e4eb98a0c307c07f74, type: 3}

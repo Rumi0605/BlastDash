@@ -29,4 +29,12 @@ public static class Enums
         Left = 90,
         Right = -90
     }
+
+    /// <summary>
+    /// 現在のプレイヤーのタイプ
+    /// </summary>
+    public enum PlayerType
+    {
+        Normal = 0,
+    }
 }

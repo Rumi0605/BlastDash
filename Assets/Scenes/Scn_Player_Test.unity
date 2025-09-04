@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c30e445faa96a24e99458aeed409a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  playerAttackDataList: {fileID: 11400000, guid: afbc4eda9ea7215478d5a9ec9d683f75, type: 2}
   groundChecker: {fileID: 552365627}
 --- !u!61 &1718609360
 BoxCollider2D:
@@ -574,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428d6e4499a24ab4db84812517d4a59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
-  testBullet: {fileID: 5925104239309457303, guid: d75eb70eb6d75e544b5078cb61ac936f, type: 3}
+  currentChargeTime: 0
 --- !u!114 &1718609365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61455d59ed875e498acd9c66bd4156f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerMoveController
-  characterStatusScriptableObject: {fileID: 11400000, guid: e1180eed9ff4960408c7f0c72ebc5361, type: 2}
+  playerStatusData: {fileID: 11400000, guid: e1180eed9ff4960408c7f0c72ebc5361, type: 2}
   currentJumpHoldTime: 0
 --- !u!1 &1803438973
 GameObject:

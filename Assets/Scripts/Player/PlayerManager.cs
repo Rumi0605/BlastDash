@@ -1,3 +1,4 @@
+using System;
 using Input;
 using Interface;
 using UnityEngine;
@@ -12,8 +13,16 @@ namespace Player
         private IMove  MoveController;
         private IAttack  AttackController;
         
-        [SerializeField]
+        /// <summary>
+        /// 向いている方向
+        /// </summary>
         private Enums.FacingDirection currentFacingDirection = Enums.FacingDirection.Right;
+        
+        /// <summary>
+        /// 攻撃データのリスト
+        /// </summary>
+        [SerializeField]
+        private PlayerAttackDataList playerAttackDataList;
         
         /// <summary>
         /// 床の判定をするクラス
@@ -37,9 +46,21 @@ namespace Player
                 return;
             }
             
-            groundChecker.OnEnterGroundEvent += MoveController.JumpReset;
+            if (playerAttackDataList == null)
+            {
+                Debug.LogWarning($"{SCRIPT_NAME}:攻撃データのリストがないよ");
+                enabled = false;
+                return;
+            }
+            
+            groundChecker.OnEnterGroundEvent += MoveController.Reset;
         }
-        
+
+        private void Start()
+        {
+            ChangeType(Enums.PlayerType.Normal);
+        }
+
         private void Update()
         {
             MoveAction();
@@ -69,8 +90,15 @@ namespace Player
         /// </summary>
         private void AttackAction()
         {
-            if (playerInput.IsAttackPressed) AttackController.Attack(currentFacingDirection);
-            if (playerInput.IsAttackHold) AttackController.AttackHold();
+            if (playerInput.IsAttackPressed)
+            {
+                AttackController.Attack(currentFacingDirection);
+            }
+
+            if (playerInput.IsAttackHold)
+            {
+                AttackController.Charge();
+            }
         }
         
         /// <summary>
@@ -88,6 +116,23 @@ namespace Player
                 MoveController.JumpHold();
             }
         }
+
+        /// <summary>
+        /// タイプの変更
+        /// </summary>
+        /// <param name="type"></param>
+        private void ChangeType(Enums.PlayerType type)
+        {
+            var typeData = playerAttackDataList.GetPlayerAttackData(type);
+
+            if (typeData == null)
+            {
+                Debug.LogWarning($"{SCRIPT_NAME}:攻撃データの取得に失敗したよ");
+                return;
+            }
+            
+            AttackController.SetAttackData(typeData);
+        }
         
         private void OnDestroy()
         {
@@ -96,7 +141,7 @@ namespace Player
                 return;
             }
             
-            groundChecker.OnEnterGroundEvent -= MoveController.JumpReset;
+            groundChecker.OnEnterGroundEvent -= MoveController.Reset;
         }
     }
 }
