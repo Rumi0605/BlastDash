@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2bf4f80729ed0e4da446f8af68f8446, type: 3}
-  m_Name: PlayerAttackList
+  m_Name: PlayerBulletDataList
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackDataList
   playerAttackDataList:
   - {fileID: 11400000, guid: 898c81e70ab90034f9f90fbddc339de2, type: 2}

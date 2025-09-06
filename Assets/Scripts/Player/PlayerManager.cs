@@ -13,21 +13,17 @@ namespace Player
         private IMove  MoveController;
         private IAttack  AttackController;
         
+        [SerializeField]
+        private Enums.PlayerType playerType;
         /// <summary>
         /// 向いている方向
         /// </summary>
         private Enums.FacingDirection currentFacingDirection = Enums.FacingDirection.Right;
         
-        /// <summary>
-        /// 攻撃データのリスト
-        /// </summary>
-        [SerializeField]
-        private PlayerAttackDataList playerAttackDataList;
         
         /// <summary>
         /// 床の判定をするクラス
         /// </summary>
-        [SerializeField] 
         private GroundChecker groundChecker;
         
         private const string SCRIPT_NAME = nameof(PlayerManager);
@@ -42,13 +38,6 @@ namespace Player
             if (groundChecker == null)
             {
                 Debug.LogWarning($"{SCRIPT_NAME}:床判定するスクリプトの参照が正しくないよ");
-                enabled = false;
-                return;
-            }
-            
-            if (playerAttackDataList == null)
-            {
-                Debug.LogWarning($"{SCRIPT_NAME}:攻撃データのリストがないよ");
                 enabled = false;
                 return;
             }
@@ -92,7 +81,7 @@ namespace Player
         {
             if (playerInput.IsAttackPressed)
             {
-                AttackController.Attack(currentFacingDirection);
+                AttackController.Attack(currentFacingDirection, playerType);
             }
 
             if (playerInput.IsAttackHold)
@@ -123,15 +112,7 @@ namespace Player
         /// <param name="type"></param>
         private void ChangeType(Enums.PlayerType type)
         {
-            var typeData = playerAttackDataList.GetPlayerAttackData(type);
-
-            if (typeData == null)
-            {
-                Debug.LogWarning($"{SCRIPT_NAME}:攻撃データの取得に失敗したよ");
-                return;
-            }
-            
-            AttackController.SetAttackData(typeData);
+            playerType = type;
         }
         
         private void OnDestroy()

@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackData
   playerType: 0
   chargeDataList:
-  - chargeTime: 0
+  - bulletType: 1
+    chargeTime: 0
     speed: 8
     damage: 1
     prefab: {fileID: 9192379568567999025, guid: e2afd5563b797df4080eb8e25a1fe269, type: 3}
-  - chargeTime: 1
+  - bulletType: 2
+    chargeTime: 1
     speed: 8
     damage: 2
     prefab: {fileID: 9192379568567999025, guid: 9c56c429d1c99764aa63547009b13485, type: 3}
-  - chargeTime: 3
+  - bulletType: 3
+    chargeTime: 3
     speed: 12
     damage: 3
     prefab: {fileID: 9192379568567999025, guid: 79d4c09404c743e4eb98a0c307c07f74, type: 3}

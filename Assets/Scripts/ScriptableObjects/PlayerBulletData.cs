@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerAttackData", menuName = "PlayerAttackData")]
-public class PlayerAttackData : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerAttackData", menuName = "PlayerBulletData")]
+public class PlayerBulletData : ScriptableObject
 {
     /// <summary>
     /// タイプ
@@ -31,19 +31,23 @@ public class PlayerAttackData : ScriptableObject
 [Serializable]
 public class ChargeLevelData
 {
-    [SerializeField,Tooltip("この段階に到達するまでのチャージ時間 (秒)")] 
+    [SerializeField] 
+    private Enums.BulletType bulletType;
+    public Enums.BulletType BulletType => bulletType;
+    
+    [SerializeField] 
     private float chargeTime;
     public float ChargeTime => chargeTime;
 
-    [SerializeField,Tooltip("この段階の弾の速さ")]
+    [SerializeField]
     private float speed;
     public float Speed => speed;
 
-    [SerializeField,Tooltip("この段階の弾のダメージ")] 
+    [SerializeField] 
     private int damage;
     public int Damage => damage;
 
-    [SerializeField,Tooltip("弾のPrefab")]
+    [SerializeField]
     private GameObject prefab;
     public GameObject Prefab => prefab;
 }

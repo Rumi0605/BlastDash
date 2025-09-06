@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptableObjectScript", menuName = "PlayerAttackDataList")]
-public class PlayerAttackDataList : ScriptableObject
+[CreateAssetMenu(fileName = "ScriptableObjectScript", menuName = "PlayerBulletDataList")]
+public class PlayerBulletDataList : ScriptableObject
 {
     /// <summary>
     /// 攻撃データのリスト
     /// </summary>
     [SerializeField] 
-    private List<PlayerAttackData> playerAttackDataList = new List<PlayerAttackData>();
+    private List<PlayerBulletData> playerAttackDataList = new List<PlayerBulletData>();
 
     /// <summary>
     /// タイプにあった攻撃データを取得
     /// </summary>
     /// <returns></returns>
-    public PlayerAttackData GetPlayerAttackData(Enums.PlayerType type)
+    public PlayerBulletData GetPlayerTypeBulletData(Enums.PlayerType type)
     {
         var data = playerAttackDataList.FirstOrDefault(x => x.PlayerType == type);
         if (data == null)
@@ -24,5 +24,14 @@ public class PlayerAttackDataList : ScriptableObject
             return null;
         }
         return data;
+    }
+    
+    /// <summary>
+    /// 全てのデータを返す
+    /// </summary>
+    /// <returns></returns>
+    public List<PlayerBulletData> GetAllData()
+    {
+        return playerAttackDataList;
     }
 }

@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour ,IAttack
 {
-    private PlayerAttackData attackData;
-
     /// <summary>
     /// 現在のホールド時間
     /// </summary>
@@ -13,30 +11,19 @@ public class PlayerAttackController : MonoBehaviour ,IAttack
 
     private const string SCRIPT_NAME = nameof(PlayerAttackController);
     
-    /// <summary>
-    /// 攻撃種類の変更
-    /// </summary>
-    /// <param name="attackData"></param>
-    public void SetAttackData(PlayerAttackData attackData)
+    public void Attack(Enums.FacingDirection direction, Enums.PlayerType playerType)
     {
-        this.attackData = attackData;
-    }
-    
-    public void Attack(Enums.FacingDirection direction)
-    {
-        var data = GetChargeLevelData();
-        
-        if (data == null)
+        if (BulletPoolManager.Instance == null)
         {
-            Debug.LogWarning($"{SCRIPT_NAME}:攻撃データが見つからないよ");
+            Debug.LogWarning($"{SCRIPT_NAME}:PoolManagerが見つからないよ");
             return;
         }
-        
-        var prefab = Instantiate(data.Prefab, transform.position, Quaternion.identity);
-        var bullet = prefab.transform.GetComponent<Bullet>();
-        bullet.SetStatus(data.Speed, data.Damage);
-        prefab.transform.rotation = Quaternion.Euler(0, 0, (int)direction);
 
+        var bullet = BulletPoolManager.Instance.OrderBullet(playerType, currentChargeTime);
+        bullet.transform.localPosition = transform.localPosition;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, (int)direction);
+        bullet.SetActive(true);
+        
         Reset();
     }
 
@@ -45,18 +32,7 @@ public class PlayerAttackController : MonoBehaviour ,IAttack
     /// </summary>
     public void Charge()
     {
-        currentChargeTime = Mathf.Min(currentChargeTime + Time.deltaTime, attackData.ChargeDataList.Max(x => x.ChargeTime));
-    }
-
-    /// <summary>
-    /// 現在のホールド時間に対応するチャージ段階を取得
-    /// </summary>
-    private ChargeLevelData GetChargeLevelData()
-    {
-        return attackData.ChargeDataList
-            .Where(x => currentChargeTime >= x.ChargeTime)
-            .OrderByDescending(x => x.ChargeTime)
-            .FirstOrDefault();
+        currentChargeTime += Time.deltaTime;
     }
     
     /// <summary>

@@ -3,7 +3,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float frameCount = 0;
-    private const int deleteFrame = 500;
+    [SerializeField]
+    private int deleteFrame = 1000;
 
     /// <summary>
     /// 移動速度
@@ -22,13 +23,14 @@ public class Bullet : MonoBehaviour
     {
         this.speed = speed;
         this.damage = damage;
+        frameCount = 0;
     }
 
     private void Update()
     {
         if (++frameCount >= deleteFrame)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         transform.Translate(Vector3.up * Time.deltaTime * speed);
     }

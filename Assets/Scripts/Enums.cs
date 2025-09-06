@@ -3,7 +3,7 @@ public static class Enums
     /// <summary>
     /// 接触している地面の種類
     /// </summary>
-    public enum  GroundType
+    public enum GroundType
     {
         /// <summary>
         /// 何もない
@@ -21,6 +21,17 @@ public static class Enums
         Passable
     }
 
+    /// <summary>
+    /// 弾の種類
+    /// </summary>
+    public enum BulletType
+    {
+        None = 0,
+        NormalLv1,
+        NormalLv2,
+        NormalLv3,
+    }
+    
     /// <summary>
     /// 向いている方向
     /// </summary>
