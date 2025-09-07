@@ -50,7 +50,7 @@ namespace Player
         /// </summary>
         public void Move(float moveX)
         {
-            rigidbody2D.linearVelocity = new Vector2(moveX * playerStatusData.MovementSpeed, rigidbody2D.linearVelocity.y);
+            rigidbody2D.linearVelocity = new Vector2(moveX * playerStatusData.MoveSpeed, rigidbody2D.linearVelocity.y);
         }
         
         /// <summary>

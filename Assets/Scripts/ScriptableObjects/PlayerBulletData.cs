@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerAttackData", menuName = "PlayerBulletData")]
+[CreateAssetMenu(fileName = "BulletDataList", menuName = "Bullet/Player/BulletData")]
 public class PlayerBulletData : ScriptableObject
 {
     /// <summary>

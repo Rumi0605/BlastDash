@@ -1,42 +1,42 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptableObjectScript", menuName = "PlayerStatusData")]
+[CreateAssetMenu(fileName = "PlayerStatus", menuName = "Status/Player/Status")]
 public class PlayerStatusData : ScriptableObject
 {
     /// <summary>
     /// 移動速度
     /// </summary>
-    [SerializeField,Tooltip("左右の移動速度")]
-    private float movementSpeed;
+    [SerializeField]
+    private float moveSpeed;
 
     /// <summary>
     /// ジャンプで加算される力
     /// </summary>
-    [SerializeField,Tooltip("最初のジャンプ力")] 
+    [SerializeField] 
     private float jumpForce;
     
     /// <summary>
     /// ジャンプホールドで加算される力
     /// </summary>
-    [SerializeField,Tooltip("長押しした時の上昇量")] 
+    [SerializeField] 
     private float jumpHoldForce;
     
     /// <summary>
     /// ジャンプホールドできる最大時間
     /// </summary>
-    [SerializeField,Tooltip("上昇し続けられる時間")] 
+    [SerializeField] 
     private float maxJumpHoldTime;
     
     /// <summary>
     /// ジャンプできる最大回数
     /// </summary>
-    [SerializeField,Tooltip("ジャンプできる数")] 
+    [SerializeField] 
     private int maxJumpCount;
     
     /// <summary>
     /// 移動速度の取得
     /// </summary>
-    public float MovementSpeed => movementSpeed;
+    public float MoveSpeed => moveSpeed;
     
     /// <summary>
     /// ジャンプで加算される力の取得

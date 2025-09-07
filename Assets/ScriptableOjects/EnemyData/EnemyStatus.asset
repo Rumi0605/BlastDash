@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da0ae1bb6a8b474da1bb25f8afc3f34, type: 3}
-  m_Name: Player
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterStatusScriptableObject
-  moveSpeed: 5
-  jumpForce: 8
-  jumpHoldForce: 1.5
-  maxJumpHoldTime: 0.5
-  maxJumpCount: 1
+  m_Script: {fileID: 11500000, guid: 803b3b8da72f7fd4f8b7b757c2d2286a, type: 3}
+  m_Name: EnemyStatus
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatusData
+  maxHP: 3
+  moveSpeed: 4
+  attackDamage: 0
+  contactDamage: 1
+  canFly: 0
+  isBoss: 0

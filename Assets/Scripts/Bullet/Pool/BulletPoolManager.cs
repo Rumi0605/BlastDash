@@ -89,7 +89,7 @@ public class BulletPoolManager : MonoBehaviour
         }
         
         // ステータス設定
-        var bulletComp = data.GetComponent<Bullet>();
+        var bulletComp = data.GetComponent<NormalBullet>();
         bulletComp.SetStatus(useBulletData.Speed, useBulletData.Damage);
 
         return data;
