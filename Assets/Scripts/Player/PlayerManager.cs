@@ -62,12 +62,20 @@ namespace Player
         private void MoveAction()
         {
             var moveX = playerInput.Horizontal;
-            
+
             currentFacingDirection = moveX switch
             {
-                > 0 when currentFacingDirection != Enums.FacingDirection.Right => Enums.FacingDirection.Right,
-                < 0 when currentFacingDirection != Enums.FacingDirection.Left => Enums.FacingDirection.Left,
+                > 0 => Enums.FacingDirection.Right,
+                < 0 => Enums.FacingDirection.Left,
                 _ => currentFacingDirection
+            };
+
+            // Y回転を変更
+            transform.rotation = currentFacingDirection switch
+            {
+                Enums.FacingDirection.Right => Quaternion.Euler(0, 0, 0),
+                Enums.FacingDirection.Left  => Quaternion.Euler(0, 180, 0),
+                _ => transform.rotation
             };
 
             MoveController.Move(moveX);
@@ -80,7 +88,7 @@ namespace Player
         {
             if (playerInput.IsAttackPressed)
             {
-                AttackController.Attack(currentFacingDirection, playerType);
+                AttackController.Attack(playerType ,currentFacingDirection);
             }
 
             if (playerInput.IsAttackHold)

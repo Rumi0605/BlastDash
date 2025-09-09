@@ -2,11 +2,13 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour, IEnemy
 {
+    protected Rigidbody2D rigidbody2D;
+    
     [SerializeField]
     protected EnemyStatusData  statusData;
 
     protected int currentHP;
-
+    
     private const string SCRIPT_NAME = nameof(EnemyBase);
     
     protected void Awake()
@@ -14,6 +16,14 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (statusData == null)
         {
             Debug.LogWarning($"{SCRIPT_NAME}:ステータスデータが見つからないよ");
+            enabled = false;
+            return;
+        }
+        
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        if (rigidbody2D == null)
+        {
+            Debug.LogWarning($"{SCRIPT_NAME}:Rigidbody2dがアタッチされてないよ");
             enabled = false;
             return;
         }

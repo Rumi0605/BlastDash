@@ -13,7 +13,7 @@ public class EnemyStatusData : ScriptableObject
     /// 移動速度
     /// </summary>
     [SerializeField] 
-    private int moveSpeed;
+    private float moveSpeed;
 
     /// <summary>
     /// 攻撃によるダメージ
@@ -40,12 +40,12 @@ public class EnemyStatusData : ScriptableObject
     /// <summary>
     /// 最大体力を取得
     /// </summary>
-    public int MoveSpeed => moveSpeed;
+    public float MoveSpeed => moveSpeed;
     
     /// <summary>
     /// 攻撃によるダメージを取得
     /// </summary>
-    public int atackDamage => attackDamage;
+    public int AttackDamage => attackDamage;
     
     /// <summary>
     /// 接触によるダメージを取得

@@ -37,8 +37,8 @@ public static class Enums
     /// </summary>
     public enum FacingDirection
     {
-        Left = 90,
-        Right = -90
+        Right = 0,
+        Left = 180
     }
 
     /// <summary>

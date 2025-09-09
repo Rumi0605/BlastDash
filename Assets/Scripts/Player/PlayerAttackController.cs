@@ -11,7 +11,7 @@ public class PlayerAttackController : MonoBehaviour ,IAttack
 
     private const string SCRIPT_NAME = nameof(PlayerAttackController);
     
-    public void Attack(Enums.FacingDirection direction, Enums.PlayerType playerType)
+    public void Attack(Enums.PlayerType playerType,  Enums.FacingDirection direction)
     {
         if (BulletPoolManager.Instance == null)
         {
