@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Enemys
@@ -47,7 +46,7 @@ namespace Enemys
         private LayerMask playerLayer;
 
         /// <summary>
-        /// 通常時の移動場率
+        /// 通常時の移動倍率
         /// </summary>
         private const int DEFAULT_SPEED_TIMES = 1;
         
@@ -78,13 +77,6 @@ namespace Enemys
         {
             Move();
         }
-
-        public override void TakeDamage(int damage)
-        {
-            currentHP -= damage;
-
-            Debug.Log($"{SCRIPT_NAME}:受けたダメージ：{damage}｜残り体力：{statusData.MaxHP}");
-        }
         
         protected override void Move()
         {
@@ -98,11 +90,6 @@ namespace Enemys
             var speedTimes = IsCheckPlayer() ? PLAYER_DISCOVERY_TIMES : DEFAULT_SPEED_TIMES;
             
             rigidbody2D.linearVelocity = new Vector2(moveDirection * statusData.MoveSpeed * speedTimes, rigidbody2D.linearVelocity.y);
-        }
-        
-        public override void Die()
-        {
-            //ダミーなので死なない
         }
 
         private bool IsCheckPlayer()
@@ -126,11 +113,13 @@ namespace Enemys
             // 壁チェック
             Vector3 directionLine = direction == Enums.FacingDirection.Right ? Vector3.right : Vector3.left;
             bool isWallAhead = Physics2D.Raycast(wallCheck.position, directionLine, checkTurnDistance, turnLayer);
-            
+
+# if UNITY_EDITOR
             //エディタで可視化用
             Debug.DrawRay(groundCheck.position, Vector2.down * checkTurnDistance, Color.red);
             Debug.DrawRay(wallCheck.position, directionLine * checkTurnDistance, Color.red);
-            
+# endif
+
             return !isGroundAhead || isWallAhead;
         }
         

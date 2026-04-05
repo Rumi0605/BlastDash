@@ -45,14 +45,25 @@ public abstract class BulletBase : MonoBehaviour
     protected virtual void OnHit(IEnemy enemy)
     {
         enemy.TakeDamage(damage);
-        gameObject.SetActive(false);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        var targetTag = other.gameObject.tag;
+
+        switch (targetTag)
         {
-            OnHit(other.gameObject.GetComponent<IEnemy>());
+            case "Ground" or "Wall":
+                gameObject.SetActive(false);
+                return;
+            case "Shield":
+                other.gameObject.GetComponent<Shield>().OnHit();
+                gameObject.SetActive(false);
+                return;
+            case "Enemy":
+                OnHit(other.gameObject.GetComponent<IEnemy>());
+                gameObject.SetActive(false);
+                return;
         }
     }
 }

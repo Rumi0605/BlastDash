@@ -16,12 +16,12 @@ MonoBehaviour:
   chargeDataList:
   - bulletType: 1
     chargeTime: 0
-    speed: 8
+    speed: 10
     damage: 1
     prefab: {fileID: 9192379568567999025, guid: e2afd5563b797df4080eb8e25a1fe269, type: 3}
   - bulletType: 2
     chargeTime: 1
-    speed: 8
+    speed: 10
     damage: 2
     prefab: {fileID: 9192379568567999025, guid: 9c56c429d1c99764aa63547009b13485, type: 3}
   - bulletType: 3

@@ -48,4 +48,10 @@ public static class Enums
     {
         Normal = 0,
     }
+
+    public enum GuardManState
+    {
+        Guard = 0,
+        Weak
+    }
 }

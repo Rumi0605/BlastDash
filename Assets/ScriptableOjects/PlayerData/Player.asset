@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatusScriptableObject
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 8
   jumpHoldForce: 2
   maxJumpHoldTime: 0.5
   maxJumpCount: 1

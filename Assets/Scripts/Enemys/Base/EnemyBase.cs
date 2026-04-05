@@ -45,6 +45,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
         if (currentHP > 0)
         {
+            Debug.Log($"{statusData.name}:受けたダメージ：{damage}｜残り体力：{currentHP}");
             return;
         }
         
